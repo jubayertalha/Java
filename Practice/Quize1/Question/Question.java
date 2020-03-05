@@ -5,8 +5,8 @@ class Question{
 	private static int q2;
 	
 	public void add(int i){
-		q1 = q2+i;
-		q2 = q1-q2+i;
+		q2 = q1+i;
+		q1 = q2-q1+i;
 	}
 	public void show(){
 		System.out.println("Q : "+q1+" & "+q2);
@@ -18,7 +18,7 @@ class Question{
 		q.show();
 		q.add(2);
 		q.show();
-		Question qqq = new Question();
+		Question qqq = q;
 		qqq.add(0);
 		q.show();
 		qqq.show();
