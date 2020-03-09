@@ -5,6 +5,8 @@ class Output{
 	public static void main(String []args){
 		Output o = new Output();
 		double d = 100.0;
-		System.out.print(d);
+		float f = 100.9F;
+		System.out.print(d+"---"+f);
+		//Sample s = new Sample();
 	} 
 }
