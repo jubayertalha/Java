@@ -8,7 +8,7 @@ public class Coordinate{
 	public double getLongitude(){
 		return longitude;
 	}
-	
+
 	public void setLatitude(double latitude){
 		this.latitude = latitude;
 	}
