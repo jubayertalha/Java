@@ -1,4 +1,6 @@
 import java.lang.*;
+import classes.*;
+import interfaces.*;
 
 public class Start
 {
@@ -68,14 +70,6 @@ public class Start
 		c3.insertAccount(sa4);
 		c3.insertAccount(fa4);
 		
-		Bank b = new Bank();
-		
-		b.insertCustomer(c1);
-		b.insertCustomer(c2);
-		b.insertCustomer(c3);
-		
-		b.showAllCustomers();
-		
 		Employee e1 = new Employee();
 		e1.setEmpId("1-2-3");
 		e1.setName("ASD");
@@ -86,9 +80,21 @@ public class Start
 		e2.setName("QWE");
 		e2.setSalary(2222.5);
 		
+		Bank b = new Bank();
+		
+		
+		b.insertCustomer(c1);
+		b.insertCustomer(c2);
+		b.insertCustomer(c3);
+		
 		b.insertEmployee(e1);
 		b.insertEmployee(e2);
+
 		
+		b.showAllCustomers();
 		b.showAllEmployees();
+		
+		System.out.println(".......................");
+		b.getCustomer(11223344).showAllAccounts();
 	}
 }

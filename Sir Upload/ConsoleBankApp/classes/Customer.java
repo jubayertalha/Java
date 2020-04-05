@@ -1,4 +1,6 @@
+package classes;
 import java.lang.*;
+import interfaces.*;
 
 public class Customer implements AccountOperations
 {
@@ -61,4 +63,22 @@ public class Customer implements AccountOperations
 			}
 		}
 	}
+	public Account getAccount(int accountNumber)
+	{
+		Account a = null;
+		
+		for(int i=0; i<accounts.length; i++)
+		{
+			if(accounts[i] != null)
+			{
+				if(accounts[i].getAccountNumber() == accountNumber)
+				{
+					a = accounts[i];
+					break;
+				}
+			}
+		}
+		return a;
+	}
+	
 }

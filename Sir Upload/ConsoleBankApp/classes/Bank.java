@@ -1,4 +1,6 @@
+package classes;
 import java.lang.*;
+import interfaces.*;
 
 public class Bank implements CustomerOperations, EmployeeOperations
 {
@@ -18,19 +20,13 @@ public class Bank implements CustomerOperations, EmployeeOperations
 				break;
 			}
 		}
-		if(flag == 1)
-		{
-			System.out.println("Customer Inserted");
-		}
-		else
-		{
-			System.out.println("Customer Can Not be Inserted");
-		}
+		if(flag == 1){System.out.println("Customer Inserted");}
+		else{System.out.println("Customer can Not be Inserted");}
 	}
+	
 	public void removeCustomer(Customer c)
 	{
 		int flag = 0;
-		
 		for(int i=0; i<customers.length; i++)
 		{
 			if(customers[i] == c)
@@ -40,27 +36,40 @@ public class Bank implements CustomerOperations, EmployeeOperations
 				break;
 			}
 		}
-		if(flag == 1)
-		{
-			System.out.println("Customer Removed");
-		}
-		else
-		{
-			System.out.println("Customer Can Not be Removed");
-		}
+		if(flag == 1){System.out.println("Customer Removed");}
+		else{System.out.println("Customer can Not be Removed");}
 	}
+	
+	public Customer getCustomer(int nid)
+	{
+		Customer c = null;
+		
+		for(int i=0; i<customers.length; i++)
+		{
+			if(customers[i] != null)
+			{
+				if(customers[i].getNid() == nid)
+				{
+					c = customers[i];
+					break;
+				}
+			}
+		}
+		return c;
+	}
+	
 	public void showAllCustomers()
 	{
 		for(Customer c : customers)
 		{
-			if(c != null)
+			if(c!= null)
 			{
-				System.out.println("************************");
+				System.out.println("**********************************");
 				System.out.println("Customer Name: "+ c.getName());
 				System.out.println("Customer Nid: "+ c.getNid());
-				System.out.println("-------------------------");
+				System.out.println("----------------------------------");
 				c.showAllAccounts();
-				System.out.println("-------------------------");
+				System.out.println("----------------------------------");
 				System.out.println();
 			}
 		}
@@ -78,50 +87,57 @@ public class Bank implements CustomerOperations, EmployeeOperations
 				break;
 			}
 		}
-		if(flag == 1)
-		{
-			System.out.println("Employee Inserted");
-		}
-		else
-		{
-			System.out.println("Employee Can Not be Inserted");
-		}
+		if(flag == 1){System.out.println("Employee Inserted");}
+		else{System.out.println("Employee can Not be Inserted");}
 	}
-	public void removeEmployee(Employee c)
+	
+	public void removeEmployee(Employee e)
 	{
 		int flag = 0;
-		
 		for(int i=0; i<employees.length; i++)
 		{
-			if(employees[i] == c)
+			if(employees[i] == e)
 			{
 				employees[i] = null;
 				flag = 1;
 				break;
 			}
 		}
-		if(flag == 1)
-		{
-			System.out.println("Employee Removed");
-		}
-		else
-		{
-			System.out.println("Employee Can Not be Removed");
-		}
+		if(flag == 1){System.out.println("Employee Removed");}
+		else{System.out.println("Employee can Not be Removed");}
 	}
 	public void showAllEmployees()
 	{
 		System.out.println("/////////////////////////////////");
 		for(Employee e : employees)
 		{
-			if(e != null)
+			if(e!= null)
 			{
-				System.out.println("Employee Id: "+ e.getEmpId());
 				System.out.println("Employee Name: "+ e.getName());
-				System.out.println("Employee Salary: "+ e.getSalary());
+				System.out.println("Employee Id: "+ e.getEmpId());
+				System.out.println("Salary: "+ e.getSalary());
 				System.out.println();
 			}
 		}
 		System.out.println("/////////////////////////////////");
 	}
+	
+	public Employee getEmployee(String empId)
+	{
+		Employee e = null;
+		
+		for(int i=0; i<employees.length; i++)
+		{
+			if(employees[i] != null)
+			{
+				if(employees[i].getEmpId().equals(empId))
+				{
+					e = employees[i];
+					break;
+				}
+			}
+		}
+		return e;
+	}
+	
 }

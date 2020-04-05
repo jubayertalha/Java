@@ -1,3 +1,4 @@
+package classes;
 import java.lang.*;
 
 public class FixedAccount extends Account
