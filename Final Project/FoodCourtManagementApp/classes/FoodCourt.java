@@ -64,6 +64,7 @@ public class FoodCourt implements RestaurantOperations, EmployeeOperations{
 	}
 	
 	public void showAllRestaurants(){
+		boolean isEmpty = true;
 		for(Restaurant r : restaurants){
 			if(r != null){
 				System.out.println("#################################################");
@@ -73,7 +74,14 @@ public class FoodCourt implements RestaurantOperations, EmployeeOperations{
 				r.showAllFoodItems();
 				System.out.println("#################################################");
 				System.out.println();
+				isEmpty = false;
 			}
+		}
+		if(isEmpty){
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println("\t"+"There is no Restaurent");
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println();
 		}
 	}
 
@@ -133,6 +141,7 @@ public class FoodCourt implements RestaurantOperations, EmployeeOperations{
 	}
 
 	public void showAllEmployees(){
+		boolean isEmpty = true;
 		for(Employee e : employees){
 			if( e!= null){
 				System.out.println("#################################################");
@@ -141,7 +150,14 @@ public class FoodCourt implements RestaurantOperations, EmployeeOperations{
 				System.out.println("\tEmployee Salary: "+e.getSalary());
 				System.out.println("#################################################");
 				System.out.println();
+				isEmpty = false;
 			}
+		}
+		if(isEmpty){
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println("\t"+"There is no Employee");
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println();
 		}
 	}
 }

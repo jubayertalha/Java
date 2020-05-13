@@ -1,4 +1,5 @@
 import classes.*;
+import file.*;
 import java.io.*;
 import java.util.*;
 
@@ -7,13 +8,19 @@ public class Start {
 	private static Scanner sc = new Scanner(System.in);
 	private static InputStreamReader isr = new InputStreamReader(System.in);
 	private static BufferedReader bfr = new BufferedReader(isr);
-	private static File file;				
-	private static FileWriter writer;		
-	private static FileReader reader;		
-	private static BufferedReader fbfr;
+	private static FileOperation fileOperation;
 
 	public static void main(String args[]) {
 
+		System.out.println("\n");
+		System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+		System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+		System.out.println("^^^^^  WELCOME TO FOOD COURT MANAGEMENT APP ^^^^^");
+		System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+		System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+		System.out.println("\n");
+
+		fileOperation = new FileOperation();
 		FoodCourt foodCourt = new FoodCourt();
 		showMainMenu(foodCourt);
 
@@ -277,16 +284,7 @@ public class Start {
 				s += "\tAdding Restaurant Name: "+r.getName()+"\r\n";
 				s += "*************************************************\r\n";
 
-				try{
-					file = new File("history.txt");
-					file.createNewFile();
-					writer = new FileWriter(file, true);
-					writer.write(s+"\r"+"\n");
-					writer.flush();
-					writer.close();
-				}catch(IOException ioe){
-					ioe.printStackTrace();
-				}
+				fileOperation.write(s+"\r"+"\n");
 
 				f.addQuantity(amount);
 			}else{
@@ -327,16 +325,7 @@ public class Start {
 				s += "\tSeller Restaurant Name: "+r.getName()+"\r\n";
 				s += "*************************************************\r\n";
 
-				try{
-					file = new File("history.txt");
-					file.createNewFile();
-					writer = new FileWriter(file, true);
-					writer.write(s+"\r"+"\n");
-					writer.flush();
-					writer.close();
-				}catch(IOException ioe){
-					ioe.printStackTrace();
-				}
+				fileOperation.write(s+"\r"+"\n");
 
 				f.sellQuantity(amount);
 			}else{
@@ -352,20 +341,8 @@ public class Start {
 		System.out.println("'''''''''''''''''''''''''''''''''''''''''''''''''");
 		System.out.println("''''''''''''''   Add Sell History   '''''''''''''");
 		System.out.println("'''''''''''''''''''''''''''''''''''''''''''''''''");
-		try{
-			reader = new FileReader(file);
-			fbfr = new BufferedReader(reader);
-			String text="", temp;	
-			while((temp=fbfr.readLine())!=null){
-				text=text+temp+"\n"+"\r";
-			}
-			System.out.print(text);
-			reader.close();
-		}
-		catch(IOException ioe)
-		{
-			ioe.printStackTrace();
-		}
+		
+		fileOperation.read();
 	}
 
 	private static void showMainMenu(FoodCourt foodCourt) {

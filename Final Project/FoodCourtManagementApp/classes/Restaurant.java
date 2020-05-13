@@ -64,10 +64,18 @@ public class Restaurant implements FoodItemOperations{
 	}
 
 	public void showAllFoodItems(){
+		boolean isEmpty = true;
 		for(FoodItem f : foodItems){
 			if(f != null){
 				f.showInfo();
+				isEmpty = false;
 			}
+		}
+		if(isEmpty){
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println("\t"+"There is no FoodItem");
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			System.out.println();
 		}
 	}
 
