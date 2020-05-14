@@ -1,100 +1,552 @@
 import java.lang.*;
+import java.util.*;
+import java.io.*;
 import classes.*;
 import interfaces.*;
+import fileio.*;
+
 
 public class Start
 {
 	public static void main(String args[])
 	{
-		SavingsAccount sa1 = new SavingsAccount();
-		sa1.setAccountNumber(1111);
-		sa1.setBalance(500);
-		sa1.setInterestRate(12.5);
+		Scanner sc = new Scanner(System.in);
+		InputStreamReader isr = new InputStreamReader(System.in);
+		BufferedReader bfr = new BufferedReader(isr);
 		
-		SavingsAccount sa2 = new SavingsAccount();
-		sa2.setAccountNumber(2111);
-		sa2.setBalance(5000);
-		sa2.setInterestRate(10.5);
-		
-		SavingsAccount sa3 = new SavingsAccount();
-		sa3.setAccountNumber(3111);
-		sa3.setBalance(3300);
-		sa3.setInterestRate(2.5);
-		
-		SavingsAccount sa4 = new SavingsAccount();
-		sa4.setAccountNumber(4111);
-		sa4.setBalance(4000);
-		sa4.setInterestRate(5.5);
-		
-		FixedAccount fa1 = new FixedAccount();
-		fa1.setAccountNumber(5111);
-		fa1.setBalance(500);
-		fa1.setTenureYear(10);
-		
-		FixedAccount fa2 = new FixedAccount();
-		fa2.setAccountNumber(6111);
-		fa2.setBalance(5000);
-		fa2.setTenureYear(5);
-		
-		FixedAccount fa3 = new FixedAccount();
-		fa3.setAccountNumber(7111);
-		fa3.setBalance(3300);
-		fa3.setTenureYear(3);
-		
-		FixedAccount fa4 = new FixedAccount();
-		fa4.setAccountNumber(8111);
-		fa4.setBalance(4000);
-		fa4.setTenureYear(7);
-		
-		
-		Customer c1 = new Customer();
-		c1.setName("ABCD");
-		c1.setNid(11223344);
-		
-		c1.insertAccount(sa1);
-		c1.insertAccount(sa2);
-		c1.insertAccount(fa1);
-		
-		Customer c2 = new Customer();
-		c2.setName("MNOP");
-		c2.setNid(11332244);
-		
-		c2.insertAccount(fa2);
-		c2.insertAccount(fa3);
-		c2.insertAccount(sa3);
-		
-		Customer c3 = new Customer();
-		c3.setName("XYZ");
-		c3.setNid(11003344);
-		
-		c3.insertAccount(sa4);
-		c3.insertAccount(fa4);
-		
-		Employee e1 = new Employee();
-		e1.setEmpId("1-2-3");
-		e1.setName("ASD");
-		e1.setSalary(200.5);
-		
-		Employee e2 = new Employee();
-		e2.setEmpId("1-2-4");
-		e2.setName("QWE");
-		e2.setSalary(2222.5);
+		FileReadWriteDemo frwd = new FileReadWriteDemo();
 		
 		Bank b = new Bank();
 		
+		boolean choice = true;
 		
-		b.insertCustomer(c1);
-		b.insertCustomer(c2);
-		b.insertCustomer(c3);
-		
-		b.insertEmployee(e1);
-		b.insertEmployee(e2);
+		while(choice)
+		{
+			System.out.println("What do you want to do?");
+			System.out.println("1. Employee Management");
+			System.out.println("2. Customer Management");
+			System.out.println("3. Customer Account Management");
+			System.out.println("4. Account Transactions");
+			System.out.println("5. Exit");
+			
+			System.out.print("Your Option: ");
+			int option = sc.nextInt();
+			
+			switch(option)
+			{
+				case 1:
+					System.out.println("-----------------------------------------");
+					System.out.println("You have choosen Employee Management");
+					System.out.println("-----------------------------------------");
+					
+					System.out.println("What do you want to do?");
+					System.out.println("1. Insert New Employee");
+					System.out.println("2. Remove Existing Employee");
+					System.out.println("3. Get an Employee");
+					System.out.println("4. Show All Employees");
+					System.out.println("5. Go Back");
+					
+					System.out.print("Your Option: ");
+					int c1 = sc.nextInt();
+					
+					switch(c1)
+					{
+						case 1:
+							System.out.println("-----------------------------------------");
+							System.out.println("Insert New Employee");
+							
+							Employee e = new Employee();
+							
+							//e.setEmpId(sc.next());
+							//e.setName(sc.next());			
+							//e.setSalary(sc.nextDouble());			
+							System.out.print("Enter Employee ID: ");
+							String empId1 = sc.next();
+							e.setEmpId(empId1);
+							
+							System.out.print("Enter Employee Name: ");
+							String name1 = sc.next();
+							e.setName(name1);
+							
+							System.out.print("Enter Employee Salary: ");
+							double salary1 = sc.nextDouble();
+							e.setSalary(salary1);
+							
+							
+							b.insertEmployee(e);
+							
+							System.out.println("-----------------------------------------");
+							break;
+							
+						case 2:
+							System.out.println("-----------------------------------------");
+							System.out.println("Remove Existing Employee");
+							
+							System.out.print("Enter Employee ID: ");
+							String empId2 = sc.next();
+							
+							b.removeEmployee(b.getEmployee(empId2));
 
-		
-		b.showAllCustomers();
-		b.showAllEmployees();
-		
-		System.out.println(".......................");
-		b.getCustomer(11223344).showAllAccounts();
+							System.out.println("-----------------------------------------");
+							break;
+						
+						
+						case 3:
+							System.out.println("-----------------------------------------");
+							System.out.println("Get an Employee");
+							
+							System.out.print("Enter Employee ID: ");
+							String empId3 = sc.next();
+							
+							Employee e3 = b.getEmployee(empId3);
+							
+							if(e3 != null)
+							{
+								System.out.println("Employee ID is: "+e3.getEmpId());
+								System.out.println("Employee Name is: "+e3.getName());
+								System.out.println("Employee Salary is: "+e3.getSalary());
+							}
+							else
+							{
+								System.out.println("Employee Does NOT Exists");
+							}
+							
+							System.out.println("-----------------------------------------");
+							break;
+						
+						case 4:
+							System.out.println("-----------------------------------------");
+							System.out.println("Show All Employees");
+							
+							b.showAllEmployees();
+							
+							System.out.println("-----------------------------------------");
+							break;
+						
+						case 5:
+							System.out.println("-----------------------------------------");
+							System.out.println("Going Back");
+							System.out.println("-----------------------------------------");
+							break;
+						
+						default:
+						
+							System.out.println("-----------------------------------------");
+							System.out.println("Invalid");
+							System.out.println("-----------------------------------------");
+							break;
+					}
+					
+					break;
+				
+				case 2:
+				
+					
+					System.out.println("-----------------------------------------");
+					System.out.println("You have choosen Customer Management");
+					System.out.println("-----------------------------------------");
+					
+					System.out.println("What do you want to do?");
+					System.out.println("1. Insert New Customer");
+					System.out.println("2. Remove Existing Customer");
+					System.out.println("3. Get a Customer");
+					System.out.println("4. Show All Customers");
+					System.out.println("5. Go Back");
+					
+					System.out.print("Your Option: ");
+					int c2 = sc.nextInt();
+					
+					switch(c2)
+					{
+						case 1:
+							System.out.println("-----------------------------------------");
+							System.out.println("Insert New Customer");
+							
+							Customer cust1 = new Customer();
+									
+							System.out.print("Enter Customer NID: ");
+							int nid1 = sc.nextInt();
+							cust1.setNid(nid1);
+							String name1;
+							System.out.print("Enter Customer Name: ");
+							try
+							{
+								name1 = bfr.readLine();
+							}
+							catch(IOException ioe)
+							{
+								name1 = "defaultName";
+							}
+							cust1.setName(name1);
+							
+							b.insertCustomer(cust1);
+							
+							System.out.println("-----------------------------------------");
+							break;
+							
+						case 2:
+							System.out.println("-----------------------------------------");
+							System.out.println("Remove Existing Customer");
+							
+							System.out.print("Enter Customer NID: ");
+							int nid2 = sc.nextInt();
+							
+							//b.removeCustomer(b.getCustomer(nid2));
+							
+							Customer cust2 = b.getCustomer(nid2);
+							b.removeCustomer(cust2);
+
+							System.out.println("-----------------------------------------");
+							break;
+						
+						
+						case 3:
+							System.out.println("-----------------------------------------");
+							System.out.println("Get a Customer");
+							
+							System.out.print("Enter Customer NID: ");
+							int nid3 = sc.nextInt();
+							
+							Customer cust3 = b.getCustomer(nid3);
+							
+							if(cust3 != null)
+							{
+								System.out.println("Customer NID: "+cust3.getNid());
+								System.out.println("Customer Name: "+cust3.getName());
+								cust3.showAllAccounts();
+							}
+							else
+							{
+								System.out.println("Customer Does NOT Exists");
+							}
+							
+							System.out.println("-----------------------------------------");
+							break;
+						
+						case 4:
+							System.out.println("-----------------------------------------");
+							System.out.println("Show All Customers");
+							
+							b.showAllCustomers();
+							
+							System.out.println("-----------------------------------------");
+							break;
+						
+						case 5:
+							System.out.println("-----------------------------------------");
+							System.out.println("Going Back");
+							System.out.println("-----------------------------------------");
+							break;
+						
+						default:
+						
+							System.out.println("-----------------------------------------");
+							System.out.println("Invalid");
+							System.out.println("-----------------------------------------");
+							break;
+					}
+
+					
+					break;
+					
+				case 3:
+				
+					System.out.println("-----------------------------------------");
+					System.out.println("You have choosen Customer Account Management");
+					System.out.println("-----------------------------------------");
+					
+					System.out.println("What do you want to do?");
+					System.out.println("1. Insert New Account for a Customer");
+					System.out.println("2. Remove Existing Account of a Customer");
+					System.out.println("3. Get an Account of a Customer");
+					System.out.println("4. Show All Accounts of a Customer");
+					System.out.println("5. Go Back");
+					
+					System.out.print("Your Option: ");
+					int c3 = sc.nextInt();
+					
+					switch(c3)
+					{
+						case 1:
+							System.out.println("-----------------------------------------");
+							System.out.println("Insert New Account for a Customer\n");
+							System.out.println("Which Type of Account do you want?");
+							System.out.println("1. Savings Account");
+							System.out.println("2. Fixed Account");
+							System.out.println("3. Go Back");
+							
+							System.out.print("Your Type: ");
+							int type = sc.nextInt();
+							
+							Account a = null;
+							
+							if(type == 1)
+							{
+								System.out.print("Enter Account Number : ");
+								int an1 = sc.nextInt();
+								System.out.print("Enter Account Balance : ");
+								double balance1 = sc.nextDouble();
+								System.out.print("Enter Interest Rate : ");
+								double ir1 = sc.nextDouble();
+								
+								SavingsAccount sa = new SavingsAccount();
+								sa.setAccountNumber(an1);
+								sa.setBalance(balance1);
+								sa.setInterestRate(ir1);
+								
+								a = sa;
+								
+							}
+							else if(type == 2)
+							{
+								System.out.print("Enter Account Number : ");
+								int an1 = sc.nextInt();
+								System.out.print("Enter Account Balance : ");
+								double balance1 = sc.nextDouble();
+								System.out.print("Enter Tenure Year : ");
+								int ty1 = sc.nextInt();
+								
+								FixedAccount fa = new FixedAccount();
+								fa.setAccountNumber(an1);
+								fa.setBalance(balance1);
+								fa.setTenureYear(ty1);
+								
+								a = fa;
+							}
+							else if(type == 3)
+							{
+								System.out.println("Going Back ...");
+							}
+							else
+							{
+								System.out.println("Invalid Type");
+							}
+							
+							if(a!=null)
+							{
+								System.out.print("Enter Customer NID: ");
+								int nid1 = sc.nextInt();
+								
+								b.getCustomer(nid1).insertAccount(a);
+							}
+						
+							System.out.println("-----------------------------------------");
+							break;
+							
+						case 2:
+							System.out.println("-----------------------------------------");
+							System.out.println("Remove Existing Account");
+							
+							System.out.print("Enter Customer NID: ");
+							int nid2 = sc.nextInt();
+							System.out.print("Enter Account Number: ");
+							int an2 = sc.nextInt();
+							
+							b.getCustomer(nid2).removeAccount(b.getCustomer(nid2).getAccount(an2));
+							
+							/*
+							Customer cc = b.getCustomer(nid2);
+							Account aa = cc.getAccount(an2);
+							
+							cc.removeAccount(aa);
+							*/
+
+							System.out.println("-----------------------------------------");
+							break;
+						
+						
+						case 3:
+							System.out.println("-----------------------------------------");
+							System.out.println("Get a Customer Account");
+							
+							System.out.print("Enter Customer NID: ");
+							int nid3 = sc.nextInt();
+							System.out.print("Enter Account Number: ");
+							int an3 = sc.nextInt();
+							
+							Account a3 = b.getCustomer(nid3).getAccount(an3);
+							
+							if(a3 != null)
+							{
+								a3.showInfo();
+							}
+							
+							System.out.println("-----------------------------------------");
+							break;
+						
+						case 4:
+							System.out.println("-----------------------------------------");
+							System.out.println("Show All Accounts");
+							
+							System.out.print("Enter Customer NID: ");
+							int nid4 = sc.nextInt();
+						
+							b.getCustomer(nid4).showAllAccounts();
+							
+							System.out.println("-----------------------------------------");
+							break;
+						
+						case 5:
+							System.out.println("-----------------------------------------");
+							System.out.println("Going Back");
+							System.out.println("-----------------------------------------");
+							break;
+						
+						default:
+						
+							System.out.println("-----------------------------------------");
+							System.out.println("Invalid");
+							System.out.println("-----------------------------------------");
+							break;
+					}
+
+					
+					break;
+					
+				case 4:
+				
+					System.out.println("-----------------------------------------");
+					System.out.println("You have choosen Account Transactions");
+					System.out.println("-----------------------------------------");
+					
+					System.out.println("What do you want to do?\n");
+					System.out.println("1. Deposit Money");
+					System.out.println("2. Withdraw Money");
+					System.out.println("3. Transfer Money");
+					System.out.println("4. Show Transaction History");
+					System.out.println("5. Go Back");
+					
+					System.out.print("Your Option: ");
+					int c4 = sc.nextInt();
+					
+					switch(c4)
+					{
+						case 1:
+						
+							System.out.println("-----------------------------------------");
+							System.out.println("Deposit Money");
+							
+							System.out.print("Enter Customer Nid: ");
+							int nid1 = sc.nextInt();
+							System.out.print("Enter Account Number: ");
+							int an1 = sc.nextInt();
+							System.out.print("Enter Amount: ");
+							double amount1 = sc.nextDouble();
+							
+							if(amount1>0)
+							{
+								//b.getCustomer(nid1).getAccount(an1).deposit(amount1);
+								
+								Customer cc = b.getCustomer(nid1);
+								Account aa = cc.getAccount(an1);
+								aa.deposit(amount1);
+								
+								//frwd.writeInFile("$"+amount1+" has been Deposited in Account Number "+an1);
+								frwd.writeInFile("Deposit : $"+ amount1 +" in Account Number "+an1);
+								
+							}
+							System.out.println("-----------------------------------------");
+							break;
+							
+						case 2:
+						
+							System.out.println("-----------------------------------------");
+							System.out.println("Withdraw Money");
+							
+							System.out.print("Enter Customer Nid: ");
+							int nid2 = sc.nextInt();
+							System.out.print("Enter Account Number: ");
+							int an2 = sc.nextInt();
+							System.out.print("Enter Amount: ");
+							double amount2 = sc.nextDouble();
+							
+							
+							if(amount2>0 && amount2 <= b.getCustomer(nid2).getAccount(an2).getBalance())
+							{
+								//b.getCustomer(nid2).getAccount(an2).withdraw(amount2);
+								
+								Customer cc = b.getCustomer(nid2);
+								Account aa = cc.getAccount(an2);
+								aa.withdraw(amount2);
+								
+								//frwd.writeInFile("$"+amount1+" has been Deposited in Account Number "+an1);
+								frwd.writeInFile("Withdraw : $"+ amount2 +" from Account Number "+an2);
+								
+							}
+							
+							System.out.println("-----------------------------------------");
+							break;
+							
+						case 3:
+						
+							System.out.println("-----------------------------------------");
+							System.out.println("Transfer Money");
+							
+							System.out.print("Enter From Customer Nid: ");
+							int fromNid = sc.nextInt();
+							System.out.print("Enter From Account Number: ");
+							int fromAN = sc.nextInt();
+							System.out.print("Enter Amount: ");
+							double amount3 = sc.nextDouble();
+							
+							System.out.print("Enter To Customer Nid: ");
+							int toNid = sc.nextInt();
+							System.out.print("Enter To Account Number: ");
+							int toAN = sc.nextInt();
+							
+							
+							Customer fromCustomer = b.getCustomer(fromNid);
+							Customer toCustomer = b.getCustomer(toNid);
+							
+							Account fromAccount = fromCustomer.getAccount(fromAN);
+							Account toAccount = toCustomer.getAccount(toAN);
+							
+							if(amount3 >0 && amount3 <= fromAccount.getBalance())
+							{
+								fromAccount.transfer(toAccount, amount3);
+								
+								frwd.writeInFile("Transfer: $"+amount3+ " from Account Number "+ fromAN +" to Account Number "+toAN);
+							}
+							
+							System.out.println("-----------------------------------------");
+							break;
+						
+						case 4:
+						
+							System.out.println("-----------------------------------------");
+							System.out.println("Show Transactions History");
+							frwd.readFromFile();
+							System.out.println("-----------------------------------------");
+							break;
+							
+						case 5:
+						
+							System.out.println("-----------------------------------------");
+							System.out.println("Going back....");
+							System.out.println("-----------------------------------------");
+							break;
+							
+						default:
+						
+							System.out.println("-----------------------------------------");
+							System.out.println("Invalid");
+							System.out.println("-----------------------------------------");
+							break;
+					}
+					
+					break;
+					
+				case 5:
+					
+					System.out.println("You have choosen to exit");
+					choice = false;
+					break;
+					
+				default:
+				
+					System.out.println("Invalid Option");
+					break;
+			}
+		}
 	}
 }

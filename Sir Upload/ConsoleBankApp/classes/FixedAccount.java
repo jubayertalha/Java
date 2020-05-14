@@ -15,8 +15,8 @@ public class FixedAccount extends Account
 	}
 	public void showInfo()
 	{
-		System.out.println("Account Number: "+getAccountNumber());
-		System.out.println("Balance: "+getBalance());
+		System.out.println("Account Number: "+accountNumber);
+		System.out.println("Balance: "+balance);
 		System.out.println("Tenure Year: "+ tenureYear);
 		System.out.println();
 	}

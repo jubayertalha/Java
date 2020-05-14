@@ -1,4 +1,5 @@
 package classes;
+
 import java.lang.*;
 import interfaces.*;
 
@@ -22,7 +23,6 @@ public abstract class Account implements ITransactions
 			System.out.println("Previous Balance: "+ balance);
 			System.out.println("Deposit Amount: "+ amount);
 			balance += amount;
-			//balance = balance + amount;
 			System.out.println("Current Balance: "+ balance);
 		}
 		else
@@ -37,7 +37,6 @@ public abstract class Account implements ITransactions
 			System.out.println("Previous Balance:	"+ balance);
 			System.out.println("Withdraw Amount:	"+ amount);
 			balance -= amount;
-			//balance = balance - amount;
 			System.out.println("Current Balance:	"+ balance);
 		}
 		else

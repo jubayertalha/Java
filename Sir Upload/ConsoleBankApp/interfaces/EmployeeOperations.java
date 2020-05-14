@@ -1,9 +1,9 @@
 package interfaces;
-import classes.Employee;
+import classes.*;
 public interface EmployeeOperations
 {
-	void insertEmployee(Employee e);
-	void removeEmployee(Employee e);
+	void insertEmployee(Employee c);
+	void removeEmployee(Employee c);
 	Employee getEmployee(String empId);
 	void showAllEmployees();
 }

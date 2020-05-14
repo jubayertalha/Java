@@ -53,6 +53,7 @@ public class Customer implements AccountOperations
 		if(flag == 1){System.out.println("Account Removed");}
 		else{System.out.println("Can Not Remove");}
 	}
+	
 	public void showAllAccounts()
 	{
 		for(Account a : accounts)
@@ -63,6 +64,7 @@ public class Customer implements AccountOperations
 			}
 		}
 	}
+	
 	public Account getAccount(int accountNumber)
 	{
 		Account a = null;
@@ -80,5 +82,4 @@ public class Customer implements AccountOperations
 		}
 		return a;
 	}
-	
 }

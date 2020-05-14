@@ -20,13 +20,19 @@ public class Bank implements CustomerOperations, EmployeeOperations
 				break;
 			}
 		}
-		if(flag == 1){System.out.println("Customer Inserted");}
-		else{System.out.println("Customer can Not be Inserted");}
+		if(flag == 1)
+		{
+			System.out.println("Customer Inserted");
+		}
+		else
+		{
+			System.out.println("Customer Can Not be Inserted");
+		}
 	}
-	
 	public void removeCustomer(Customer c)
 	{
 		int flag = 0;
+		
 		for(int i=0; i<customers.length; i++)
 		{
 			if(customers[i] == c)
@@ -36,10 +42,31 @@ public class Bank implements CustomerOperations, EmployeeOperations
 				break;
 			}
 		}
-		if(flag == 1){System.out.println("Customer Removed");}
-		else{System.out.println("Customer can Not be Removed");}
+		if(flag == 1)
+		{
+			System.out.println("Customer Removed");
+		}
+		else
+		{
+			System.out.println("Customer Can Not be Removed");
+		}
 	}
-	
+	public void showAllCustomers()
+	{
+		for(Customer c : customers)
+		{
+			if(c != null)
+			{
+				System.out.println("************************");
+				System.out.println("Customer Name: "+ c.getName());
+				System.out.println("Customer Nid: "+ c.getNid());
+				System.out.println("-------------------------");
+				c.showAllAccounts();
+				System.out.println("-------------------------");
+				System.out.println();
+			}
+		}
+	}
 	public Customer getCustomer(int nid)
 	{
 		Customer c = null;
@@ -58,22 +85,7 @@ public class Bank implements CustomerOperations, EmployeeOperations
 		return c;
 	}
 	
-	public void showAllCustomers()
-	{
-		for(Customer c : customers)
-		{
-			if(c!= null)
-			{
-				System.out.println("**********************************");
-				System.out.println("Customer Name: "+ c.getName());
-				System.out.println("Customer Nid: "+ c.getNid());
-				System.out.println("----------------------------------");
-				c.showAllAccounts();
-				System.out.println("----------------------------------");
-				System.out.println();
-			}
-		}
-	}
+	
 	public void insertEmployee(Employee e)
 	{
 		int flag = 0;
@@ -87,41 +99,52 @@ public class Bank implements CustomerOperations, EmployeeOperations
 				break;
 			}
 		}
-		if(flag == 1){System.out.println("Employee Inserted");}
-		else{System.out.println("Employee can Not be Inserted");}
+		if(flag == 1)
+		{
+			System.out.println("Employee Inserted");
+		}
+		else
+		{
+			System.out.println("Employee Can Not be Inserted");
+		}
 	}
-	
-	public void removeEmployee(Employee e)
+	public void removeEmployee(Employee c)
 	{
 		int flag = 0;
+		
 		for(int i=0; i<employees.length; i++)
 		{
-			if(employees[i] == e)
+			if(employees[i] == c)
 			{
 				employees[i] = null;
 				flag = 1;
 				break;
 			}
 		}
-		if(flag == 1){System.out.println("Employee Removed");}
-		else{System.out.println("Employee can Not be Removed");}
+		if(flag == 1)
+		{
+			System.out.println("Employee Removed");
+		}
+		else
+		{
+			System.out.println("Employee Can Not be Removed");
+		}
 	}
 	public void showAllEmployees()
 	{
 		System.out.println("/////////////////////////////////");
 		for(Employee e : employees)
 		{
-			if(e!= null)
+			if(e != null)
 			{
-				System.out.println("Employee Name: "+ e.getName());
 				System.out.println("Employee Id: "+ e.getEmpId());
-				System.out.println("Salary: "+ e.getSalary());
+				System.out.println("Employee Name: "+ e.getName());
+				System.out.println("Employee Salary: "+ e.getSalary());
 				System.out.println();
 			}
 		}
 		System.out.println("/////////////////////////////////");
 	}
-	
 	public Employee getEmployee(String empId)
 	{
 		Employee e = null;
@@ -139,5 +162,4 @@ public class Bank implements CustomerOperations, EmployeeOperations
 		}
 		return e;
 	}
-	
 }
