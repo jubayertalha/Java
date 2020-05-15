@@ -108,3 +108,14 @@
 	Adding Restaurant Name: Coffee House
 *************************************************
 
+*************************************************
+	Activity Type: Add
+	Food Id: f
+	Food Name: f
+	Adding Quantity: 4
+	Previous Stock: 4
+	Current Stock: 8
+	Adding Restaurant Id: f
+	Adding Restaurant Name: f
+*************************************************
+
