@@ -9,21 +9,42 @@ public class Restaurant implements FoodItemOperations{
 	
 	public void insertFoodItem(FoodItem f){
 		boolean isInserted = false;
-		for(int i=0; i<foodItems.length; i++){
-			if(foodItems[i] == null){
-				foodItems[i] = f;
-				isInserted = true;
-				break;
+		if(getFoodItem(f.getFid())==null){
+			if(!f.getName().equals("")&&!f.getFid().equals("")){
+				if(f.getAvailableQuantity()>=0&&f.getPrice()>=0){
+					for(int i=0; i<foodItems.length; i++){
+						if(foodItems[i] == null){
+							foodItems[i] = f;
+							isInserted = true;
+							break;
+						}
+					}
+					if(isInserted){
+						System.out.println("-------------------------------------------------");
+						System.out.println("\t"+"The item has been inserted successfully!");
+						System.out.println("-------------------------------------------------");
+						System.out.println();
+					}else{
+						System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+						System.out.println("\t"+"Sorry.. There is no available space to insert a food item. Please try again!");
+						System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+						System.out.println();
+					}
+				}else{
+					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					System.out.println("\t"+"Sorry.. Inputs can't be negative. Please try again!");
+					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					System.out.println();
+				}
+			}else{
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+				System.out.println("\t"+"Sorry.. Inputs can't be empty. Please try again!");
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+				System.out.println();
 			}
-		}
-		if(isInserted){
-			System.out.println("-------------------------------------------------");
-			System.out.println("\t"+"The item has been inserted successfully!");
-			System.out.println("-------------------------------------------------");
-			System.out.println();
 		}else{
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-			System.out.println("\t"+"Sorry.. There is no available space to insert a food item. Please try again!");
+			System.out.println("\t"+"Sorry.. There is another FoodItem with this Id. Please try again with another Id!");
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			System.out.println();
 		}

@@ -8,7 +8,7 @@ public class MainDish extends FoodItem{
 		System.out.println("*************************************************");
 		System.out.println("\tFood Id: "+getFid());
 		System.out.println("\tFood Name: "+getName());
-		System.out.println("\ttAvailable Quantity: "+getAvailableQuantity());
+		System.out.println("\tAvailable Quantity: "+getAvailableQuantity());
 		System.out.println("\tFood Price: "+getPrice());
 		System.out.println("\tDish Category: "+category);
 		System.out.println("*************************************************");

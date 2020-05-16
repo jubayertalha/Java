@@ -17,7 +17,7 @@ public abstract class FoodItem implements IQuantity{
 			System.out.println();
 		}else{
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-			System.out.println("\t"+"Sorry.. "+amount+" is a invalid input! Please try again!");
+			System.out.println("\t"+"Sorry... Inputs are invalid! Please try again!");
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			System.out.println();
 		}
@@ -26,7 +26,7 @@ public abstract class FoodItem implements IQuantity{
 	public void sellQuantity(int amount){
 		if(amount<1){
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-			System.out.println("\t"+"Sorry.. "+amount+" is a invalid input! Please try again!");
+			System.out.println("\t"+"Sorry... Inputs are invalid! Please try again!");
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			System.out.println();
 		}else if(amount>availableQuantity){

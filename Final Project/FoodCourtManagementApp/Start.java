@@ -23,11 +23,10 @@ public class Start {
 		fileOperation = new FileOperation();
 		FoodCourt foodCourt = new FoodCourt();
 		showMainMenu(foodCourt);
-
 	}
 
 	private static String getLineString(){
-		String s = "";
+		String s = "null";
 		try {
 			s = bfr.readLine();
 		} catch (IOException e) {
@@ -47,16 +46,15 @@ public class Start {
 	}
 
 	private static String getString(){
-		String s = "";
+		String s = "null";
 		try {
 			s = sc.next();
 		} catch (InputMismatchException e){
 			s = "null";
-			sc = new Scanner(System.in);
 		} catch (NoSuchElementException e){
 			s = "null";
-			sc = new Scanner(System.in);
 		}
+		sc = new Scanner(System.in);
 		return s;
 	}
 
@@ -66,11 +64,9 @@ public class Start {
 			d = sc.nextDouble();
 		} catch (InputMismatchException e){
 			d = -1;
-			sc = new Scanner(System.in);
 		} catch (NoSuchElementException e){
 			d = -1;
-			sc = new Scanner(System.in);
-		}
+		}sc = new Scanner(System.in);
 		return d;
 	}
 
@@ -80,11 +76,10 @@ public class Start {
 			i = sc.nextInt();
 		} catch (InputMismatchException e){
 			i = -1;
-			sc = new Scanner(System.in);
 		} catch (NoSuchElementException e){
 			i = -1;
-			sc = new Scanner(System.in);
 		}
+		sc = new Scanner(System.in);
 		return i;
 	}
 
@@ -245,7 +240,7 @@ public class Start {
 				quantity = getInt();
 				System.out.print("\t\tEnter MainDish Id: ");
 				id = getString();
-				if(!name.equals("null")&&!category.equals("null")&&price!=-1&&quantity!=-1&&!id.equals("null")){
+				if(!name.equals("null")&&!category.equals("null")&&!category.equals("")&&price!=-1&&quantity!=-1&&!id.equals("null")){
 					mainDish.setName(name);
 					mainDish.setCategory(category);
 					mainDish.setPrice(price);
@@ -266,16 +261,16 @@ public class Start {
 				int quantity = 0;
 				String id = "";
 				System.out.print("\t\tEnter Appitizier Name: ");
-				size = getLineString();
+				name = getLineString();
 				System.out.print("\t\tEnter Appitizer Size: ");
-				size = getString();
+				size = getLineString();
 				System.out.print("\t\tEnter Appitizer Price: ");
 				price = getDouble();
 				System.out.print("\t\tEnter Appitizer Available Quantity: ");
 				quantity = getInt();
 				System.out.print("\t\tEnter Appitizer Id: ");
 				id = getString();
-				if(!name.equals("null")&&!size.equals("null")&&price!=-1&&quantity!=-1&&!id.equals("null")){
+				if(!name.equals("null")&&!size.equals("null")&&!size.equals("")&&price!=-1&&quantity!=-1&&!id.equals("null")){
 					appetiziers.setName(name);
 					appetiziers.setSize(size);
 					appetiziers.setPrice(price);
@@ -417,7 +412,7 @@ public class Start {
 				int previous = f.getAvailableQuantity();
 				int current = previous-amount;
 				f.sellQuantity(amount);
-				if(amount<1&&amount>previous){
+				if(amount>=1&&amount<=previous){
 					String s = "*************************************************\r\n";
 					s += "\tActivity Type: Sell"+"\r\n";
 					s += "\tFood Id: "+f.getFid()+"\r\n";
@@ -457,7 +452,7 @@ public class Start {
 			System.out.println("\t2. Restaurant Management");
 			System.out.println("\t3. Restaurant FoodItem Management");
 			System.out.println("\t4. FoodItem Quantity Add-Sell");
-			System.out.println("\t5. Exit");
+			System.out.println("\t5. Exit (or hold Ctrl + c to Force Stop)");
 			System.out.print("\tEnter Your Option: ");
 			int option = getInt();
 			switch(option){

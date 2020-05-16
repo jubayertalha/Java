@@ -8,9 +8,9 @@ public class Appetiziers extends FoodItem{
 		System.out.println("*************************************************");
 		System.out.println("\tFood Id: "+getFid());
 		System.out.println("\tFood Name: "+getName());
-		System.out.println("\ttAvailable Quantity: "+getAvailableQuantity());
-		System.out.println("\ttFood Price: "+getPrice());
-		System.out.println("\ttAppetizier Size: "+size);
+		System.out.println("\tAvailable Quantity: "+getAvailableQuantity());
+		System.out.println("\tFood Price: "+getPrice());
+		System.out.println("\tAppetizier Size: "+size);
 		System.out.println("*************************************************");
 		System.out.println();
 	}

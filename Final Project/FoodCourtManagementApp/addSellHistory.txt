@@ -1,121 +1,66 @@
 *************************************************
-	Activity Type: Add
-	Food Id: aaaa
-	Food Name: Kacchi
-	Adding Quantity: 70
-	Previous Stock: 400
-	Current Stock: 470
-	Adding Restaurant Id: aaaa
-	Adding Restaurant Name: Kacchi Dine
+	Activity Type: Sell
+	Food Id: cold_coffee
+	Food Name: Cold Coffee
+	Selling Quantity: 5
+	Previous Stock: 10
+	Current Stock: 5
+	Seller Restaurant Id: khanas
+	Seller Restaurant Name: Khana's
 *************************************************
 
 *************************************************
 	Activity Type: Add
-	Food Id: bbbb
-	Food Name: Naga Wings
-	Adding Quantity: 4
-	Previous Stock: 150
-	Current Stock: 154
-	Adding Restaurant Id: bbbb
+	Food Id: kacchi
+	Food Name: Kacchi
+	Adding Quantity: 50
+	Previous Stock: 0
+	Current Stock: 50
+	Adding Restaurant Id: kacchi_vai
+	Adding Restaurant Name: Kacchi Vai
+*************************************************
+
+*************************************************
+	Activity Type: Add
+	Food Id: cold_coffee
+	Food Name: Cold Coffee
+	Adding Quantity: 25
+	Previous Stock: 5
+	Current Stock: 30
+	Adding Restaurant Id: khanas
 	Adding Restaurant Name: Khana's
 *************************************************
 
 *************************************************
 	Activity Type: Sell
-	Food Id: bbbb
-	Food Name: Naga Wings
-	Selling Quantity: 45
-	Previous Stock: 154
-	Current Stock: 109
-	Seller Restaurant Id: bbbb
+	Food Id: morog_polau
+	Food Name: Morog Polau
+	Selling Quantity: 5
+	Previous Stock: 5
+	Current Stock: 0
+	Seller Restaurant Id: kacchi_vai
+	Seller Restaurant Name: Kacchi Vai
+*************************************************
+
+*************************************************
+	Activity Type: Add
+	Food Id: morog_polau
+	Food Name: Morog Polau
+	Adding Quantity: 56
+	Previous Stock: 0
+	Current Stock: 56
+	Adding Restaurant Id: kacchi_vai
+	Adding Restaurant Name: Kacchi Vai
+*************************************************
+
+*************************************************
+	Activity Type: Sell
+	Food Id: cold_coffee
+	Food Name: Cold Coffee
+	Selling Quantity: 13
+	Previous Stock: 30
+	Current Stock: 17
+	Seller Restaurant Id: khanas
 	Seller Restaurant Name: Khana's
-*************************************************
-
-*************************************************
-	Activity Type: Add
-	Food Id: aaaa
-	Food Name: Kacchi
-	Adding Quantity: 4
-	Previous Stock: 470
-	Current Stock: 474
-	Adding Restaurant Id: aaaa
-	Adding Restaurant Name: Kacchi Dine
-*************************************************
-
-*************************************************
-	Activity Type: Sell
-	Food Id: bbbb
-	Food Name: Naga Wings
-	Selling Quantity: 45
-	Previous Stock: 109
-	Current Stock: 64
-	Seller Restaurant Id: bbbb
-	Seller Restaurant Name: Khana's
-*************************************************
-
-*************************************************
-	Activity Type: Sell
-	Food Id: aaaa
-	Food Name: Kacchi
-	Selling Quantity: 32
-	Previous Stock: 474
-	Current Stock: 442
-	Seller Restaurant Id: aaaa
-	Seller Restaurant Name: Kacchi Dine
-*************************************************
-
-*************************************************
-	Activity Type: Add
-	Food Id: cccc
-	Food Name: Chocklate
-	Adding Quantity: 55
-	Previous Stock: 45
-	Current Stock: 100
-	Adding Restaurant Id: cccc
-	Adding Restaurant Name: Burger House
-*************************************************
-
-*************************************************
-	Activity Type: Sell
-	Food Id: eeee
-	Food Name: Milk Tea
-	Selling Quantity: 34
-	Previous Stock: 555
-	Current Stock: 521
-	Seller Restaurant Id: eeee
-	Seller Restaurant Name: Tea World
-*************************************************
-
-*************************************************
-	Activity Type: Sell
-	Food Id: dddd
-	Food Name: Black Coffee
-	Selling Quantity: 45
-	Previous Stock: 666
-	Current Stock: 621
-	Seller Restaurant Id: dddd
-	Seller Restaurant Name: Coffee House
-*************************************************
-
-*************************************************
-	Activity Type: Add
-	Food Id: dddd
-	Food Name: Black Coffee
-	Adding Quantity: 5
-	Previous Stock: 621
-	Current Stock: 626
-	Adding Restaurant Id: dddd
-	Adding Restaurant Name: Coffee House
-*************************************************
-
-*************************************************
-	Activity Type: Add
-	Food Id: f
-	Food Name: f
-	Adding Quantity: 4
-	Previous Stock: 4
-	Current Stock: 8
-	Adding Restaurant Id: f
-	Adding Restaurant Name: f
 *************************************************
 

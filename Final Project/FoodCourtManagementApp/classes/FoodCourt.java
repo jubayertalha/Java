@@ -8,21 +8,35 @@ public class FoodCourt implements RestaurantOperations, EmployeeOperations{
 	
 	public void insertRestaurant(Restaurant r){
 		boolean isInserted = false;
-		for(int i=0; i<restaurants.length; i++){
-			if(restaurants[i] == null){
-				restaurants[i] = r;
-				isInserted = true;
-				break;
+		if(getRestaurant(r.getRid())==null){
+			if(!r.getName().equals("")&&!r.getRid().equals("")){
+				for(int i=0; i<restaurants.length; i++){
+					if(restaurants[i] == null){
+						restaurants[i] = r;
+						isInserted = true;
+						break;
+					}
+				}
+				if(isInserted){
+					System.out.println("-------------------------------------------------");
+					System.out.println("\t"+"The restaurant has been inserted successfully!");
+					System.out.println("-------------------------------------------------");
+					System.out.println();
+				}else{
+					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					System.out.println("\t"+"Sorry.. There is no available space for a new restaurant. Please try again!");
+					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					System.out.println();
+				}
+			}else{
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+				System.out.println("\t"+"Sorry.. Inputs can't be empty. Please try again!");
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+				System.out.println();
 			}
-		}
-		if(isInserted){
-			System.out.println("-------------------------------------------------");
-			System.out.println("\t"+"The restaurant has been inserted successfully!");
-			System.out.println("-------------------------------------------------");
-			System.out.println();
 		}else{
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-			System.out.println("\t"+"Sorry.. There is no available space for a new restaurant. Please try again!");
+			System.out.println("\t"+"Sorry.. There is another restaurent with this Id. Please try again with diffrent Id!");
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			System.out.println();
 		}
@@ -57,7 +71,6 @@ public class FoodCourt implements RestaurantOperations, EmployeeOperations{
 			if(restaurants[i] != null && restaurants[i].getRid().equals(rid)){
 				r = restaurants[i];
 				break;
-				
 			}
 		}
 		return r;
@@ -87,21 +100,42 @@ public class FoodCourt implements RestaurantOperations, EmployeeOperations{
 
 	public void insertEmployee(Employee e){
 		boolean isInserted = false;
-		for(int i=0; i<employees.length; i++){
-			if(employees[i] == null){
-				employees[i] = e;
-				isInserted = true;
-				break;
+		if(getEmployee(e.getEmpId())==null){
+			if(!e.getName().equals("")&&!e.getEmpId().equals("")){
+				if(e.getSalary()>=0){
+					for(int i=0; i<employees.length; i++){
+						if(employees[i] == null){
+							employees[i] = e;
+							isInserted = true;
+							break;
+						}
+					}
+					if(isInserted){
+						System.out.println("-------------------------------------------------");
+						System.out.println("\t"+"New employee has been appointed successfully!");
+						System.out.println("-------------------------------------------------");
+						System.out.println();
+					}else{
+						System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+						System.out.println("\t"+"Sorry.. There is no available vacancy for a new employee. Please try again!");
+						System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+						System.out.println();
+					}
+				}else{
+					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					System.out.println("\t"+"Sorry... "+e.getSalary()+" is an invalid salary input. Please try again!");
+					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					System.out.println();
+				}
+			}else{
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+				System.out.println("\t"+"Sorry.. Inputs can't be empty. Please try again!");
+				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+				System.out.println();
 			}
-		}
-		if(isInserted){
-			System.out.println("-------------------------------------------------");
-			System.out.println("\t"+"New employee has been appointed successfully!");
-			System.out.println("-------------------------------------------------");
-			System.out.println();
 		}else{
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-			System.out.println("\t"+"Sorry.. There is no available vacancy for a new employee. Please try again!");
+			System.out.println("\t"+"Sorry.. There is another employe with this Id. Please try again with another Id!");
 			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			System.out.println();
 		}
