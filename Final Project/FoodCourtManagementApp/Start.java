@@ -24,64 +24,230 @@ public class Start {
 		FoodCourt foodCourt = new FoodCourt();
 		showMainMenu(foodCourt);
 	}
+	
+	
+	//.........MAIN OPTIONS
+	//.....................
+	
 
-	private static String getLineString(){
-		String s = "null";
-		try {
-			s = bfr.readLine();
-		} catch (IOException e) {
-			s = "null";
-			sc = new Scanner(System.in);
-		} catch (InputMismatchException e){
-			s = "null";
-			sc = new Scanner(System.in);
-		} catch (NoSuchElementException e){
-			s = "null";
-			sc = new Scanner(System.in);
+	private static void showMainMenu(FoodCourt foodCourt) {
+		boolean isContinue = true;
+		while(isContinue){
+			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++");
+			System.out.println("+++++++++++++        Main Menu       ++++++++++++");
+			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++");
+			System.out.println("\t1. Employee Management");
+			System.out.println("\t2. Restaurant Management");
+			System.out.println("\t3. Restaurant FoodItem Management");
+			System.out.println("\t4. FoodItem Quantity Add-Sell");
+			System.out.println("\t5. Exit (or hold Ctrl + c to Force Stop)");
+			System.out.print("\tEnter Your Option: ");
+			int option = getInt();
+			switch(option){
+				case 1:
+					showEmployeeManagementMenu(foodCourt);
+					break;
+				case 2:
+					showRestaurentManagementMenu(foodCourt);
+					break;
+				case 3:
+					showRestaurentFoodItemManagementMenu(foodCourt);
+					break;
+				case 4:
+					showFoodItemQuantitytMenu(foodCourt);
+					break;
+				case 5:
+					System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+					System.out.println("~~~~~~~~~~~~~       Terminated       ~~~~~~~~~~~~");
+					System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+					isContinue = false;
+					break;
+				default:
+					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					System.out.println("\t"+"Sorry.. The input is invalid. Please try again!");
+					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					System.out.println();
+					break;
+			}
 		}
-		if(s==null){
-			s = "null";
-		}
-		return s;
 	}
+	
+	
+	//.........EMPLOYEE OPTIONS
+	//.........................
+	
 
-	private static String getString(){
-		String s = "null";
-		try {
-			s = sc.next();
-		} catch (InputMismatchException e){
-			s = "null";
-		} catch (NoSuchElementException e){
-			s = "null";
+	private static void showEmployeeManagementMenu(FoodCourt foodCourt){
+		boolean isContinue = true;
+		while(isContinue){
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			System.out.println("~~~~~~~~~~~~~   Employee Management  ~~~~~~~~~~~~");
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			System.out.println("\t1. Insert New Employee");
+			System.out.println("\t2. Remove Existing Employee");
+			System.out.println("\t3. Show All Employees");
+			System.out.println("\t4. Search an Employee");
+			System.out.println("\t5. Go Back");
+			System.out.print("\tEnter Your Option: ");
+			int option = getInt();
+			switch(option){
+				case 1:
+					insertNewEmployee(foodCourt);
+					break;
+				case 2:
+					removeExistingEmployee(foodCourt);
+					break;
+				case 3:
+					showAllEmployees(foodCourt);
+					break;
+				case 4:
+					searchAnEmployee(foodCourt);
+					break;
+				case 5:
+					isContinue = false;
+					break;
+				default:
+					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					System.out.println("\t"+"Sorry.. The input is invalid. Please try again!");
+					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					System.out.println();
+					break;
+			}
 		}
-		sc = new Scanner(System.in);
-		return s;
 	}
+	
+	
+	//.........RESTAURANT OPTIONS
+	//...........................
+	
 
-	private static double getDouble(){
-		double d = 0;
-		try {
-			d = sc.nextDouble();
-		} catch (InputMismatchException e){
-			d = -1;
-		} catch (NoSuchElementException e){
-			d = -1;
-		}sc = new Scanner(System.in);
-		return d;
-	}
-
-	private static int getInt(){
-		int i = 0;
-		try {
-			i = sc.nextInt();
-		} catch (InputMismatchException e){
-			i = -1;
-		} catch (NoSuchElementException e){
-			i = -1;
+	private static void showRestaurentManagementMenu(FoodCourt foodCourt){
+		boolean isContinue = true;
+		while(isContinue){
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			System.out.println("~~~~~~~~~~~~~  Restaurent Management ~~~~~~~~~~~~");
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			System.out.println("\t1. Insert New Restaurent");
+			System.out.println("\t2. Remove Existing Restaurent");
+			System.out.println("\t3. Show All Restaurents");
+			System.out.println("\t4. Search a Restaurent");
+			System.out.println("\t5. Go Back");
+			System.out.print("\tEnter Your Option: ");
+			int option = getInt();
+			switch(option){
+				case 1:
+					insertNewRestaurant(foodCourt);
+					break;
+				case 2:
+					removeExistingRestaurant(foodCourt);
+					break;
+				case 3:
+					showAllRestaurants(foodCourt);
+					break;
+				case 4:
+					searchARestaurant(foodCourt);
+					break;
+				case 5:
+					isContinue = false;
+					break;
+				default:
+					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					System.out.println("\t"+"Sorry.. The input is invalid. Please try again!");
+					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					System.out.println();
+					break;
+			}
 		}
-		sc = new Scanner(System.in);
-		return i;
 	}
+	
+	
+	//.........FOODITEM OPTIONS
+	//.........................
+	
+
+	private static void showRestaurentFoodItemManagementMenu(FoodCourt foodCourt){
+		boolean isContinue = true;
+		while(isContinue){
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			System.out.println("~~~~~~~~ Restaurent FoodItem Management ~~~~~~~~~");
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			System.out.println("\t1. Insert New FoodItem");
+			System.out.println("\t2. Remove Existing FoodItem");
+			System.out.println("\t3. Show All FoodItems");
+			System.out.println("\t4. Search a FoodItem");
+			System.out.println("\t5. Go Back");
+			System.out.print("\tEnter Your Option: ");
+			int option = getInt();
+			switch(option){
+				case 1:
+					insertNewFoodItem(foodCourt);
+					break;
+				case 2:
+					removeExistingFoodItem(foodCourt);;
+					break;
+				case 3:
+					showAllFoodItems(foodCourt);
+					break;
+				case 4:
+					searchAFoodItem(foodCourt);
+					break;
+				case 5:
+					isContinue = false;
+					break;
+				default:
+					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					System.out.println("\t"+"Sorry.. The input is invalid. Please try again!");
+					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					System.out.println();
+					break;
+			}
+		}
+	}
+	
+	
+	//.........QUANTITY OPTIONS
+	//.........................
+	
+
+	private static void showFoodItemQuantitytMenu(FoodCourt foodCourt){
+		boolean isContinue = true;
+		while(isContinue){
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			System.out.println("~~~~~~~~   FoodItem Quantity Add-Sell   ~~~~~~~~~");
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			System.out.println("\t1. Add FoodItem");
+			System.out.println("\t2. Sell FoodItem");
+			System.out.println("\t3. Show Add Sell History");
+			System.out.println("\t4. Go Back");
+			System.out.print("\tEnter Your Option: ");
+			int option = getInt();
+			switch(option){
+				case 1:
+					addFoodItem(foodCourt);
+					break;
+				case 2:
+					sellFoodItem(foodCourt);
+					break;
+				case 3:
+					showAddSellHistory(foodCourt);
+					break;
+				case 4:
+					isContinue = false;
+					break;
+				default:
+					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					System.out.println("\t"+"Sorry.. The input is invalid. Please try again!");
+					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+					System.out.println();
+					break;
+			}
+		}
+	}
+	
+
+	//.........EMPLOYEE OPERATIONS
+	//............................
+	
 
 	private static void insertNewEmployee(FoodCourt foodCourt) {
 		System.out.println("'''''''''''''''''''''''''''''''''''''''''''''''''");
@@ -145,6 +311,11 @@ public class Start {
 			System.out.println();
 		}
 	}
+	
+	
+	//.........RESTAURANT OPERATIONS
+	//..............................
+	
 
 	private static void insertNewRestaurant(FoodCourt foodCourt) {
 		System.out.println("'''''''''''''''''''''''''''''''''''''''''''''''''");
@@ -205,6 +376,11 @@ public class Start {
 			System.out.println();
 		}
 	}
+	
+	
+	//.........FOODITEM OPERATIONS
+	//............................
+	
 
 	private static void insertNewFoodItem(FoodCourt foodCourt) {
 		System.out.println("'''''''''''''''''''''''''''''''''''''''''''''''''");
@@ -350,6 +526,11 @@ public class Start {
 		}
 	}
 
+
+	//.........ADDSELL OPERATIONS
+	//...........................
+	
+	
 	private static void addFoodItem(FoodCourt foodCourt){
 		System.out.println("'''''''''''''''''''''''''''''''''''''''''''''''''");
 		System.out.println("'''''''''''''      Add FoodItem    ''''''''''''''");
@@ -442,197 +623,67 @@ public class Start {
 		fileOperation.read();
 	}
 
-	private static void showMainMenu(FoodCourt foodCourt) {
-		boolean isContinue = true;
-		while(isContinue){
-			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++");
-			System.out.println("+++++++++++++        Main Menu       ++++++++++++");
-			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++");
-			System.out.println("\t1. Employee Management");
-			System.out.println("\t2. Restaurant Management");
-			System.out.println("\t3. Restaurant FoodItem Management");
-			System.out.println("\t4. FoodItem Quantity Add-Sell");
-			System.out.println("\t5. Exit (or hold Ctrl + c to Force Stop)");
-			System.out.print("\tEnter Your Option: ");
-			int option = getInt();
-			switch(option){
-				case 1:
-					showEmployeeManagementMenu(foodCourt);
-					break;
-				case 2:
-					showRestaurentManagementMenu(foodCourt);
-					break;
-				case 3:
-					showRestaurentFoodItemManagementMenu(foodCourt);
-					break;
-				case 4:
-					showFoodItemQuantitytMenu(foodCourt);
-					break;
-				case 5:
-					System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-					System.out.println("~~~~~~~~~~~~~       Terminated       ~~~~~~~~~~~~");
-					System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-					isContinue = false;
-					break;
-				default:
-					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-					System.out.println("\t"+"Sorry.. The input is invalid. Please try again!");
-					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-					System.out.println();
-					break;
-			}
+
+	//.........UTILITIES
+	//..................
+	
+	
+	private static String getLineString(){
+		String s = "null";
+		try {
+			s = bfr.readLine();
+		} catch (IOException e) {
+			s = "null";
+			sc = new Scanner(System.in);
+		} catch (InputMismatchException e){
+			s = "null";
+			sc = new Scanner(System.in);
+		} catch (NoSuchElementException e){
+			s = "null";
+			sc = new Scanner(System.in);
 		}
+		if(s==null){
+			s = "null";
+		}
+		return s;
 	}
 
-	private static void showEmployeeManagementMenu(FoodCourt foodCourt){
-		boolean isContinue = true;
-		while(isContinue){
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-			System.out.println("~~~~~~~~~~~~~   Employee Management  ~~~~~~~~~~~~");
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-			System.out.println("\t1. Insert New Employee");
-			System.out.println("\t2. Remove Existing Employee");
-			System.out.println("\t3. Show All Employees");
-			System.out.println("\t4. Search an Employee");
-			System.out.println("\t5. Go Back");
-			System.out.print("\tEnter Your Option: ");
-			int option = getInt();
-			switch(option){
-				case 1:
-					insertNewEmployee(foodCourt);
-					break;
-				case 2:
-					removeExistingEmployee(foodCourt);
-					break;
-				case 3:
-					showAllEmployees(foodCourt);
-					break;
-				case 4:
-					searchAnEmployee(foodCourt);
-					break;
-				case 5:
-					isContinue = false;
-					break;
-				default:
-					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-					System.out.println("\t"+"Sorry.. The input is invalid. Please try again!");
-					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-					System.out.println();
-					break;
-			}
+	private static String getString(){
+		String s = "null";
+		try {
+			s = sc.next();
+		} catch (InputMismatchException e){
+			s = "null";
+		} catch (NoSuchElementException e){
+			s = "null";
 		}
+		sc = new Scanner(System.in);
+		return s;
 	}
 
-	private static void showRestaurentManagementMenu(FoodCourt foodCourt){
-		boolean isContinue = true;
-		while(isContinue){
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-			System.out.println("~~~~~~~~~~~~~  Restaurent Management ~~~~~~~~~~~~");
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-			System.out.println("\t1. Insert New Restaurent");
-			System.out.println("\t2. Remove Existing Restaurent");
-			System.out.println("\t3. Show All Restaurents");
-			System.out.println("\t4. Search a Restaurent");
-			System.out.println("\t5. Go Back");
-			System.out.print("\tEnter Your Option: ");
-			int option = getInt();
-			switch(option){
-				case 1:
-					insertNewRestaurant(foodCourt);
-					break;
-				case 2:
-					removeExistingRestaurant(foodCourt);
-					break;
-				case 3:
-					showAllRestaurants(foodCourt);
-					break;
-				case 4:
-					searchARestaurant(foodCourt);
-					break;
-				case 5:
-					isContinue = false;
-					break;
-				default:
-					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-					System.out.println("\t"+"Sorry.. The input is invalid. Please try again!");
-					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-					System.out.println();
-					break;
-			}
+	private static double getDouble(){
+		double d = 0;
+		try {
+			d = sc.nextDouble();
+		} catch (InputMismatchException e){
+			d = -1;
+		} catch (NoSuchElementException e){
+			d = -1;
 		}
+		sc = new Scanner(System.in);
+		return d;
 	}
 
-	private static void showRestaurentFoodItemManagementMenu(FoodCourt foodCourt){
-		boolean isContinue = true;
-		while(isContinue){
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-			System.out.println("~~~~~~~~ Restaurent FoodItem Management ~~~~~~~~~");
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-			System.out.println("\t1. Insert New FoodItem");
-			System.out.println("\t2. Remove Existing FoodItem");
-			System.out.println("\t3. Show All FoodItems");
-			System.out.println("\t4. Search a FoodItem");
-			System.out.println("\t5. Go Back");
-			System.out.print("\tEnter Your Option: ");
-			int option = getInt();
-			switch(option){
-				case 1:
-					insertNewFoodItem(foodCourt);
-					break;
-				case 2:
-					removeExistingFoodItem(foodCourt);;
-					break;
-				case 3:
-					showAllFoodItems(foodCourt);
-					break;
-				case 4:
-					searchAFoodItem(foodCourt);
-					break;
-				case 5:
-					isContinue = false;
-					break;
-				default:
-					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-					System.out.println("\t"+"Sorry.. The input is invalid. Please try again!");
-					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-					System.out.println();
-					break;
-			}
+	private static int getInt(){
+		int i = 0;
+		try {
+			i = sc.nextInt();
+		} catch (InputMismatchException e){
+			i = -1;
+		} catch (NoSuchElementException e){
+			i = -1;
 		}
-	}
-
-	private static void showFoodItemQuantitytMenu(FoodCourt foodCourt){
-		boolean isContinue = true;
-		while(isContinue){
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-			System.out.println("~~~~~~~~   FoodItem Quantity Add-Sell   ~~~~~~~~~");
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-			System.out.println("\t1. Add FoodItem");
-			System.out.println("\t2. Sell FoodItem");
-			System.out.println("\t3. Show Add Sell History");
-			System.out.println("\t4. Go Back");
-			System.out.print("\tEnter Your Option: ");
-			int option = getInt();
-			switch(option){
-				case 1:
-					addFoodItem(foodCourt);
-					break;
-				case 2:
-					sellFoodItem(foodCourt);
-					break;
-				case 3:
-					showAddSellHistory(foodCourt);
-					break;
-				case 4:
-					isContinue = false;
-					break;
-				default:
-					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-					System.out.println("\t"+"Sorry.. The input is invalid. Please try again!");
-					System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-					System.out.println();
-					break;
-			}
-		}
+		sc = new Scanner(System.in);
+		return i;
 	}
 }
