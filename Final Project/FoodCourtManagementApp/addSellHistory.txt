@@ -64,3 +64,25 @@
 	Seller Restaurant Name: Khana's
 *************************************************
 
+*************************************************
+	Activity Type: Add
+	Food Id: 123
+	Food Name: jhfg
+	Adding Quantity: 5
+	Previous Stock: 7
+	Current Stock: 12
+	Adding Restaurant Id: 123
+	Adding Restaurant Name: talha
+*************************************************
+
+*************************************************
+	Activity Type: Sell
+	Food Id: 123
+	Food Name: jhfg
+	Selling Quantity: 8
+	Previous Stock: 12
+	Current Stock: 4
+	Seller Restaurant Id: 123
+	Seller Restaurant Name: talha
+*************************************************
+
